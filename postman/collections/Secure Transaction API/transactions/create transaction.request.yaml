@@ -1,0 +1,17 @@
+$kind: http-request
+name: Create Transaction
+method: POST
+url: '{{baseUrl}}/api/transactions'
+order: 1000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "fromAccount": "{{fromAccountId}}",
+      "toAccount": "{{toAccountId}}",
+      "amount": 100.00,
+      "idempotencyKey": "{{$guid}}"
+    }

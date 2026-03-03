@@ -1,0 +1,9 @@
+$kind: http-request
+name: Get Account Balance
+method: GET
+url: '{{baseUrl}}/api/accounts/balance/:accountId'
+order: 3000
+pathVariables:
+  - key: accountId
+    value: '{{accountId}}'
+    description: The ID of the account to check balance for

@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get User Accounts
+method: GET
+url: '{{baseUrl}}/api/accounts'
+order: 2000

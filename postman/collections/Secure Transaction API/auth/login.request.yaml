@@ -1,0 +1,40 @@
+$kind: http-request
+name: Login
+method: POST
+url: "{{baseUrl}}/api/auth/login"
+order: 2000
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "user@example.com",
+      "password": "password123"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status code is 200', function () {
+        pm.response.to.have.status(200);
+      });
+
+      let json;
+      try {
+        json = pm.response.json();
+      } catch (e) {
+        json = {};
+      }
+
+      const token = json.token || json.accessToken || json.authToken;
+
+      pm.test('Auth token is present in response', function () {
+        pm.expect(token, 'token').to.be.a('string').and.not.be.empty;
+      });
+
+      if (pm.environment && pm.environment.name) {
+        pm.environment.set('authToken', token);
+      } else {
+        pm.collectionVariables.set('authToken', token);
+      }
+    language: text/javascript

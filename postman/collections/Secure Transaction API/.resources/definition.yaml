@@ -1,0 +1,33 @@
+$kind: collection
+name: Secure Transaction API
+description: |-
+  API collection for the Secure Transaction System - a Spring Boot application for managing user authentication, accounts, and financial transactions.
+
+  ## Authentication
+  Most endpoints require Bearer token authentication. Obtain a token via the login or register endpoints.
+
+  ## Resources
+  - **Auth**: User registration, login, and logout
+  - **Accounts**: Create and manage user accounts
+  - **Transactions**: Create transfers and initial funds
+variables:
+  - key: baseUrl
+    value: 'http://localhost:8080'
+    description: Base URL for the API server
+  - key: authToken
+    value: ''
+    description: JWT authentication token (set after login/register)
+  - key: accountId
+    value: ''
+    description: Account ID for balance lookups
+  - key: fromAccountId
+    value: ''
+    description: Source account ID for transactions
+  - key: toAccountId
+    value: ''
+    description: Destination account ID for transactions
+auth:
+  type: bearer
+  credentials:
+    - key: token
+      value: '{{authToken}}'

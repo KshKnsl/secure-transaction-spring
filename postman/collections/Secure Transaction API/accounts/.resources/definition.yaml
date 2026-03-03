@@ -1,0 +1,4 @@
+$kind: collection
+name: Accounts
+description: Account management endpoints - create accounts, list accounts, and check balances
+order: 3000

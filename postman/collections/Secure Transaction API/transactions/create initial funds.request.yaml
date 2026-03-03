@@ -1,0 +1,19 @@
+$kind: http-request
+name: Create Initial Funds
+description: |-
+  System-only endpoint to add initial funds to an account.
+  Requires system user authentication.
+method: POST
+url: '{{baseUrl}}/api/transactions/system/initial-funds'
+order: 2000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "toAccount": "{{toAccountId}}",
+      "amount": 1000.00,
+      "idempotencyKey": "{{$guid}}"
+    }

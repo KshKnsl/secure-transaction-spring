@@ -1,0 +1,5 @@
+$kind: http-request
+name: Create Account
+method: POST
+url: '{{baseUrl}}/api/accounts'
+order: 1000

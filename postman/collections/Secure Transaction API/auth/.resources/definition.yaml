@@ -1,0 +1,7 @@
+$kind: collection
+name: Auth
+description: User authentication endpoints - register, login, and logout
+order: 2000
+auth:
+  type: noauth
+  credentials: []
