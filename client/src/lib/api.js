@@ -1,7 +1,11 @@
+function getAuthHeader() {
+  const token = localStorage.getItem('token');
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
 async function request(path, options = {}) {
   const res = await fetch(path, {
-    credentials: 'include',
-    headers: { 'Content-Type': 'application/json', ...options.headers },
+    headers: { 'Content-Type': 'application/json', ...getAuthHeader(), ...options.headers },
     ...options,
   });
 

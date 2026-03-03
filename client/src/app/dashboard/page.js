@@ -120,10 +120,8 @@ export default function DashboardPage() {
   };
 
   const handleLogout = async () => {
-    try {
-      await auth.logout();
-    } catch {
-    }
+    auth.logout().catch(() => {});
+    localStorage.removeItem('token');
     localStorage.removeItem('user');
     router.push('/');
   };

@@ -20,6 +20,7 @@ export default function LoginPage() {
     const toastId = toast.loading('Signing in…');
     try {
       const user = await auth.login(form);
+      localStorage.setItem('token', user.token);
       localStorage.setItem('user', JSON.stringify({ id: user.id, email: user.email, name: user.name }));
       toast.success('Welcome back!', { id: toastId });
       router.push('/dashboard');

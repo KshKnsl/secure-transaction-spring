@@ -20,6 +20,7 @@ export default function RegisterPage() {
     const toastId = toast.loading('Creating your account…');
     try {
       const user = await auth.register(form);
+      localStorage.setItem('token', user.token);
       localStorage.setItem('user', JSON.stringify({ id: user.id, email: user.email, name: user.name }));
       toast.success('Account created!', { id: toastId });
       router.push('/dashboard');
