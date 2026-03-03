@@ -1,4 +1,4 @@
 $kind: collection
 name: Transactions
-description: Transaction endpoints - create transfers between accounts and system initial funds
+description: Transaction endpoints - create transfers between accounts
 order: 4000
